@@ -17,23 +17,55 @@
                       <div class="mb-4 sm:col-span-6">
                         <label for="title" class="block text-sm font-medium text-gray-700">Name</label>
                         <div class="mt-1">
-                          <input type="text" name="title" id="title" class="block w-full appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal">
+                          <input 
+                            type="text" 
+                            name="name" 
+                            id="name" 
+                            class="@error('name') border-red-500 @enderror block w-full appearance-none bg-white border rounded-md py-2 px-3 text-base leading-normal"
+                            value="{{old('name')}}">
                         </div>
+                        @error('name')
+                            <div class="text-red-500">{{ $message }}</div>
+                        @enderror
                       </div>
                       <div class="mb-4 sm:col-span-6">
                         <label for="image" class="block text-sm font-medium text-gray-700">Image</label>
-                        <input type="file" id="image" name="image" accept="image/png, image/gif, image/jpeg" class="block w-full appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal mt-1" type="file" id="image" name="image" />
+                        <input 
+                          type="file" 
+                          id="image" 
+                          name="image" 
+                          accept="image/png, image/gif, image/jpeg" 
+                          class=" @error('image') border-red-500 @enderror block w-full appearance-none bg-white border rounded-md py-2 px-3 text-base leading-normal mt-1" type="file" id="image" name="image" 
+                          value="{{old('image')}}"
+                          >
+                          @error('image')
+                            <div class="text-red-500">{{ $message }}</div>
+                          @enderror
                       </div>
                       <div class="mb-4 sm:col-span-6 pt-5">
                         <label for="price" class="block text-sm font-medium text-gray-700">Price</label>
                         <div class="mt-1">
-                          <input type="number" min="0.00" max="10000.00" step="0.01" name="price" id="price" class="block w-full appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal">
+                          <input 
+                            type="number" 
+                            min="0.00" 
+                            max="10000.00" 
+                            step="0.01" 
+                            name="price" 
+                            id="price" 
+                            class=" @error('price') border-red-500 @enderror block w-full appearance-none bg-white border rounded-md py-2 px-3 text-base leading-normal"
+                            value="{{ old('price') }}">
                         </div>
+                        @error('price')
+                          <div class="text-red-500">{{ $message }}</div>
+                        @enderror
                       </div>
                       <div class="mb-4 sm:col-span-6 pt-5">
                         <label for="description" class="block text-sm font-medium text-gray-700">Categories</label>
                         <div class="mt-1">
-                          <select multiple name="categories[]" id="categories" class="form-multiselect block w-full appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal mt-1">
+                          <select multiple 
+                            name="categories[]" 
+                            id="categories" 
+                            class="form-multiselect block w-full appearance-none bg-white border rounded-md py-2 px-3 text-base leading-normal mt-1">
                             @foreach ($categories as $category)
                               <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
@@ -43,8 +75,14 @@
                       <div class="mb-4 sm:col-span-6 pt-5">
                         <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
                         <div class="mt-1">
-                          <textarea rows="3" name="description" id="description" class="shadow-sm focus:ring-indigo-500 w-full appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal mt-1" ></textarea>
+                          <textarea rows="3" 
+                            name="description" 
+                            id="description" 
+                            class=" @error('description') border-red-500 @enderror shadow-sm focus:ring-indigo-500 w-full appearance-none bg-white border rounded-md py-2 px-3 text-base leading-normal mt-1" >{{old('description')}}</textarea>
                         </div>
+                        @error('description')
+                          <div class="text-red-500">{{ $message }}</div>
+                        @enderror
                       </div>
                       <div mt-6 p-4>
                         <button type="submit" class="px-6 py-2 bg-indigo-500 hover:bg-indigo-700 rounded-lg text-white">Store</button>

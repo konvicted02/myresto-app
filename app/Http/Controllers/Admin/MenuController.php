@@ -6,6 +6,8 @@ use App\Models\Menu;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\MenuStoreRequest;
+use Illuminate\Support\Facades\Storage;
 
 class MenuController extends Controller
 {
@@ -30,9 +32,22 @@ class MenuController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(MenuStoreRequest $request)
     {
-        dd($request); exit();
+        $image = $request->file('image')->store('public/menus');
+
+        $menu = Menu::create([
+            'name' => $request->name,
+            'image' => $image,
+            'price' => $request->price,
+            'description' => $request->description
+        ]);
+
+        if($request->has('categories')){
+            $menu->categories()->attach($request->categories);
+        }
+
+        return to_route('admin.menus.index');
     }
 
     /**
@@ -62,8 +77,8 @@ class MenuController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Menu $menu)
     {
-        //
+        
     }
 }

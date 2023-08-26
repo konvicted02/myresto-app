@@ -39,8 +39,6 @@ class CategoryController extends Controller
             'image' => $image,
             'description' => $request->description
         ]);
-        // Retrieve the validated input data...
-        //$validated = $request->validated();
 
         return to_route('admin.categories.index');
     }
