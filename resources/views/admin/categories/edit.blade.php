@@ -27,7 +27,7 @@
                             name="name" 
                             id="name" 
                             class="block w-full @error('name') border-red-500 @enderror"
-                            value="{{$category->name}}">
+                            value="{{ $category->name }}">
                         </div>
                         @error('name')
                             <div class="text-red-500">{{ $message }}</div>
@@ -46,7 +46,7 @@
                                 name="image" 
                                 accept="image/png, image/gif, image/jpeg" 
                                 class="relative mt-1 block w-full min-w-0 flex-auto rounded border border-solid bg-clip-padding px-0 py-[0.32rem] text-base font-normal text-neutral-700  file:-mx-3 file:-my-[0.32rem] file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-neutral-100 file:px-3 file:py-[0.32rem] file:text-neutral-700 file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-neutral-200 focus:border-primary focus:text-neutral-700 focus:shadow-te-primary focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:file:bg-neutral-700 dark:file:text-neutral-100 dark:focus:border-primary @error('image') border-red-500 @enderror" 
-                                value="{{old('image')}}">
+                                value="{{ $menu->image }}">
                             @error('image')
                                 <div class="text-red-500">{{ $message }}</div>
                             @enderror
@@ -60,7 +60,7 @@
                             rows="3" 
                             name="description" 
                             id="description" 
-                            class="shadow-sm focus:ring-indigo-500 w-full @error('description') border-red-500 @enderror" >{{$category->description}}</textarea>
+                            class="shadow-sm focus:ring-indigo-500 w-full @error('description') border-red-500 @enderror" >{{ $category->description }}</textarea>
                           @error('description')
                             <div class="text-red-500">{{ $message }}</div>
                           @enderror
