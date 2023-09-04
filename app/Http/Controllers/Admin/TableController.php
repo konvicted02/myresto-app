@@ -38,7 +38,6 @@ class TableController extends Controller
             'location' => $request->location,
             'status' => $request->status,
         ]);
-        //dd($request);
 
         return to_route('admin.tables.index');
     }
