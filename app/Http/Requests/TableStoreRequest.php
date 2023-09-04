@@ -22,8 +22,8 @@ class TableStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'number' => ['required'],
-            'name' => ['required'],
+            'number' => ['required','unique:App\Models\Table'],
+            'name' => ['required', 'unique:App\Models\Table'],
             'guest_number' => ['required'],
             'location' => ['required'],
             'status' => ['required'],
